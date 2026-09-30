@@ -1,7 +1,10 @@
+import logging
 import json
 import os
 from pathlib import Path
 from typing import Dict
+
+logger = logging.getLogger(__name__)
 
 SETTINGS_FILE = Path(__file__).parent / "user_settings.json"
 
@@ -27,7 +30,7 @@ def load_settings():
                 user_pairs = {int(k): v for k, v in data.get("pairs", {}).items()}
                 user_chart_styles = {int(k): v for k, v in data.get("styles", {}).items()}
         except Exception as e:
-            print(f"Error loading user_settings.json: {e}")
+            logger.warning(f"Error loading user_settings.json: {e}")
 
 
 def save_settings():
@@ -41,7 +44,7 @@ def save_settings():
         with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
     except Exception as e:
-        print(f"Error saving user_settings.json: {e}")
+        logger.warning(f"Error saving user_settings.json: {e}")
 
 
 # Initialize settings from file on module import
@@ -138,7 +141,7 @@ TEXTS = {
         "sig_overbought": "ПЕРЕКУПЛЕННОСТЬ 🔴 (Продажа)",
         "sig_oversold": "ПЕРЕПРОДАННОСТЬ 🟢 (Покупка)",
         "lbl_next_meeting": "📅 **След. заседание:**",
-        "lbl_market_odds": "📊 **Ожидания рынка (CME FedWatch):**",
+        "lbl_market_odds": "📊 **Ожидания рынка:**",
         "lbl_latest_news": "📰 **Последние рыночные новости:**",
         "lbl_no_news": "ℹ️ Свежих новостей по данному активу временно не найдено.",
         "alert_triggered": "🚨 **СРАБОТАЛ АЛЕРТ ПО ЦЕНЕ!**"
@@ -220,7 +223,7 @@ TEXTS = {
         "sig_overbought": "OVERBOUGHT 🔴 (Sell Signal)",
         "sig_oversold": "OVERSOLD 🟢 (Buy Signal)",
         "lbl_next_meeting": "📅 **Next Meeting:**",
-        "lbl_market_odds": "📊 **Market Odds (CME FedWatch):**",
+        "lbl_market_odds": "📊 **Market Odds:**",
         "lbl_latest_news": "📰 **Latest Market News:**",
         "lbl_no_news": "ℹ️ No recent news found for this asset.",
         "alert_triggered": "🚨 **PRICE ALERT TRIGGERED!**"
@@ -302,7 +305,7 @@ TEXTS = {
         "sig_overbought": "ПЕРЕКУПЛЕНІСТЬ 🔴 (Продаж)",
         "sig_oversold": "ПЕРЕПРОДАНІСТЬ 🟢 (Купівля)",
         "lbl_next_meeting": "📅 **Слід. засідання:**",
-        "lbl_market_odds": "📊 **Очікування ринку (CME FedWatch):**",
+        "lbl_market_odds": "📊 **Очікування ринку:**",
         "lbl_latest_news": "📰 **Останні ринкові новини:**",
         "lbl_no_news": "ℹ️ Свіжих новин по даному активу тимчасово не знайдено.",
         "alert_triggered": "🚨 **СПРАЦЮВАВ ЦІНОВИЙ АЛЕРТ!**"

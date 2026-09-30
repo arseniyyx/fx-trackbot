@@ -1,7 +1,10 @@
+import logging
 import yfinance as yf
 import datetime
 from typing import Dict, Any, List, Optional
 from services.forex_service import normalize_symbol
+
+logger = logging.getLogger(__name__)
 
 CENTRAL_BANK_RATES = {
     "ru": {
@@ -223,7 +226,7 @@ def fetch_asset_news(symbol: str, max_items: int = 4) -> List[Dict[str, str]]:
                     break
 
     except Exception as e:
-        print(f"Error fetching news for {symbol}: {e}")
+        logger.warning(f"Error fetching news for {symbol}: {e}")
 
     return articles
 

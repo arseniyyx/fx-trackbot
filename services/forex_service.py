@@ -1,8 +1,11 @@
+import logging
 import pandas as pd
 import yfinance as yf
 from typing import Dict, Any, Optional
 from config import SYMBOL_NAMES
 from services.smc_service import analyze_smc
+
+logger = logging.getLogger(__name__)
 
 TIMEFRAME_CONFIG = {
     "1m": {"period": "1d", "interval": "1m", "label": "1 Minute (1m)"},
@@ -97,7 +100,7 @@ def fetch_forex_data(symbol: str, period: str = "1mo", interval: str = "1h") -> 
             return None
         return df
     except Exception as e:
-        print(f"Error fetching data for {ticker_symbol}: {e}")
+        logger.warning(f"Error fetching data for {ticker_symbol}: {e}")
         return None
 
 

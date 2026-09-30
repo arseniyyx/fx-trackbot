@@ -1,3 +1,4 @@
+import logging
 import io
 import asyncio
 import matplotlib
@@ -7,6 +8,8 @@ import pandas as pd
 import numpy as np
 from scipy.interpolate import make_interp_spline
 from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 TV_SYMBOL_MAP = {
     # Forex
@@ -96,7 +99,7 @@ async def fetch_tradingview_live_snapshot(symbol: str, timeframe: str = "1h", df
             return screenshot_bytes
 
     except Exception as e:
-        print(f"Error fetching live TradingView chart for {symbol}: {e}")
+        logger.warning(f"Error fetching live TradingView chart for {symbol}: {e}")
         return None
 
 
@@ -254,5 +257,5 @@ def generate_trend_chart(
         return buf.getvalue()
 
     except Exception as e:
-        print(f"Error generating chart for {display_name}: {e}")
+        logger.warning(f"Error generating chart for {display_name}: {e}")
         return None

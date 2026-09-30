@@ -2,7 +2,7 @@
 
 ![FX TrackBot Analytics Banner](assets/banner.jpg)
 
-<p center>
+<p align="center">
   <img src="assets/telegram_dashboard_preview.png" alt="Telegram Bot Interface Preview" width="600"/>
 </p>
 
@@ -13,7 +13,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-An asynchronous financial market intelligence Telegram Bot built with **Python 3.11**, **aiogram 3**, **Playwright Chromium**, and **yfinance**. It delivers authentic real-time **TradingView candlestick charts**, technical indicators (**RSI, EMA 9/21, SMA 20/50**), **custom price alerts**, **macroeconomic central bank interest rates (Fed / ECB / BoJ)**, and live financial news.
+An asynchronous financial market intelligence Telegram Bot built with **Python 3.11**, **aiogram 3**, **Playwright Chromium**, and **yfinance**. It delivers authentic real-time **TradingView candlestick charts**, technical indicators (**RSI, EMA 9/21, SMA 20/50**), **custom price alerts**, **central bank interest rates (Fed / ECB / BoJ)**, and live financial news.
 
 ---
 
@@ -38,8 +38,8 @@ An asynchronous financial market intelligence Telegram Bot built with **Python 3
 - **Smart Condition Detection:** Triggers instant notifications when prices cross target thresholds (`ABOVE` 📈 or `BELOW` 📉).
 
 ### 📰 4. Central Bank Rates & Financial Market News
-- **🏛 Central Bank Interest Rates Tracker:** Real-time rates & monetary policy bias for **Fed (ФРС США)**, **ECB (ЕЦБ)**, **BoE**, **BoJ**, and **SNB**.
-- **📅 FOMC Meeting Dates & Expectations:** Displays exact dates of upcoming Fed rate decisions and **CME FedWatch** market probability metrics (e.g. `78% -25 bps cut`).
+- **🏛 Central Bank Rates:** policy rate and bias for **Fed (ФРС США)**, **ECB (ЕЦБ)**, **BoE**, **BoJ**, and **SNB** from a reference table in `services/news_service.py` that is updated by hand (not a live feed).
+- **📅 FOMC Meeting Dates & Expectations:** upcoming Fed meeting dates and rate expectations, from the same hand-maintained table.
 - **📰 Live Financial News Feed:** Real-time headlines, publishers, and publication timestamps with direct article links.
 
 ### 🌍 5. Multi-Language Support & Disk Persistence
